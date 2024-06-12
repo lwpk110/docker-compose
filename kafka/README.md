@@ -29,5 +29,9 @@ $ docker-compose up -d
 
 **重要**： 如果外部机器需要访问Kafka，那么需要将 `KAFKA_CFG_ADVERTISED_LISTENERS` 配置中的 `EXTERNAL` 的 `localhost`替换为外部IP/域名; `KAFKA_CFG_LISTENERS` 配置中的 `EXTERNAL` 设置为 `0.0.0.0:9094`。
 
-
-## 集群部署
+```bash
+# list kafka broker
+$ docker-compose exec kafka /opt/bitnami/kafka/bin/kafka-topics.sh --list --zookeeper zookeeper --bootstrap-server kafka:9092
+# create topic
+$ docker-compose exec kafka /opt/bitnami/kafka/bin/kafka-topics.sh --create --boostrap-server kafka:9092 --topic test 
+```
